@@ -1,16 +1,10 @@
 {
-    "name": "shadowhand/email",
-    "description": "Email helper for Kohana, uses Swiftmailer",
+    "name": "illusorium/kohana-email",
+    "description": "Email helper for Kohana, uses Swiftmailer. Based on shadowhand/email repo that is now removed.",
     "type": "kohana-module",
     "keywords": ["kohana", "email", "helper", "module", "library", "swiftmailer"],
-    "homepage": "http://github.com/shadowhand/email",
+    "homepage": "http://github.com/illusorium/email",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Woody Gilk",
-            "email": "woody.gilk@gmail.com"
-        }
-    ],
     "require": {
         "php": ">=5.2.4",
         "composer/installers": "~1.0",
