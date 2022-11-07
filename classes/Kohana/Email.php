@@ -11,7 +11,7 @@
 class Kohana_Email {
 
 	// Current module version
-	const VERSION = '1.0.1';
+	const VERSION = '1.0.2';
 
 	/**
 	 * @var  object  Swiftmailer instance
@@ -39,7 +39,7 @@ class Kohana_Email {
 			if ($driver === 'smtp')
 			{
 				// Create SMTP transport
-				$transport = Swift_SmtpTransport::newInstance($options['hostname']);
+				$transport = new Swift_SmtpTransport($options['hostname']);
 
 				if (isset($options['port']))
 				{
@@ -71,10 +71,10 @@ class Kohana_Email {
 					$transport->setTimeout($options['timeout']);
 				}
 			}
-			elseif ($driver === 'sendmail')
+			else
 			{
 				// Create sendmail transport
-				$transport = Swift_SendmailTransport::newInstance();
+				$transport = new Swift_SendmailTransport();
 
 				if (isset($options['command']))
 				{
@@ -82,20 +82,9 @@ class Kohana_Email {
 					$transport->setCommand($options['command']);
 				}
 			}
-			else
-			{
-				// Create native transport
-				$transport = Swift_MailTransport::newInstance();
-
-				if (isset($options['params']))
-				{
-					// Set extra parameters for mail()
-					$transport->setExtraParams($options['params']);
-				}
-			}
 
 			// Create the SwiftMailer instance
-			Email::$_mailer = Swift_Mailer::newInstance($transport);
+			Email::$_mailer = new Swift_Mailer($transport);
 		}
 
 		return Email::$_mailer;
@@ -130,7 +119,7 @@ class Kohana_Email {
 	public function __construct($subject = NULL, $message = NULL, $type = NULL)
 	{
 		// Create a new message, match internal character set
-		$this->_message = Swift_Message::newInstance();
+		$this->_message = new Swift_Message();
 
 		if ($subject)
 		{
@@ -387,7 +376,7 @@ class Kohana_Email {
 			$mime = File::mime_by_ext(pathinfo($file, PATHINFO_EXTENSION));
 		}
 
-		$this->_message->attach(Swift_Attachment::newInstance($data, $file, $mime));
+		$this->_message->attach(new Swift_Attachment($data, $file, $mime));
 
 		return $this;
 	}

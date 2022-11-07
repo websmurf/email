@@ -6,13 +6,18 @@
     "homepage": "http://github.com/illusorium/email",
     "license": "MIT",
     "require": {
-        "php": ">=5.2.4",
+        "php": ">=7.0.0",
         "composer/installers": "~1.0",
-        "swiftmailer/swiftmailer": "4.3.*"
+        "swiftmailer/swiftmailer": "^6.3"
     },
     "extra": {
         "branch-alias": {
             "dev-3.4/master": "3.4.x-dev"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
         }
     }
 }
