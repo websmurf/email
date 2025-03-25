@@ -7,12 +7,12 @@
     "license": "MIT",
     "require": {
         "php": ">=7.0.0",
-        "kohana/core": "3.4.*",
+        "kohana/core": "3.5.*",
         "swiftmailer/swiftmailer": "^6.3"
     },
     "extra": {
         "branch-alias": {
-            "dev-3.4/master": "3.4.x-dev"
+            "dev-3.5/master": "3.5.x-dev"
         }
     },
     "config": {
